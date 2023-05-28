@@ -10,3 +10,6 @@
 
 #vs directory
 .vs/
+
+#x64 directory
+x64/
