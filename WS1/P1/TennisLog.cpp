@@ -54,7 +54,7 @@ namespace sdds {
 		file.seekg(1, std::ios::beg);
 		std::getline(file, line); //First line is not needed
 
-		int counter = 0;
+		size_t counter = 0;
 		while (std::getline(file, line) && counter < count) {
 			
 			//get the tournament ID
