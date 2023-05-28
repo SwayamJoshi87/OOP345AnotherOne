@@ -1,0 +1,12 @@
+#solution files
+*.sln
+
+#vcxproject files
+*.vcxproj
+
+#user and filters
+*.filters
+*.user
+
+#vs directory
+.vs/
