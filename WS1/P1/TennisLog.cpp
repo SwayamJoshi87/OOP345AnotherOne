@@ -78,7 +78,7 @@ namespace sdds {
 
 
 	//Find matches
-	TennisLog& TennisLog::findMatches(const std::string playername) const {
+	TennisLog TennisLog::findMatches(const std::string playername) const {
 		//create a new TennisLog object
 		TennisLog newLog;
 		//loop through the matches array
@@ -118,7 +118,7 @@ namespace sdds {
 		
 	}
 
-	TennisMatch& TennisLog::operator[](size_t idx) const {
+	TennisMatch TennisLog::operator[](size_t idx) const {
 		//check if the index is valid
 		TennisMatch emptyMatch;
 		if (idx >= count) {

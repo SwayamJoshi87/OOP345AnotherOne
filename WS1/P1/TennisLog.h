@@ -12,7 +12,7 @@ namespace sdds {
 		std::string tournamentID = "";
 		std::string tournamentName = "";
 		//Using unsigned here as it is specifically mentioned to use a positive number
-		unsigned int matchID = 0;
+		size_t matchID = 0;
 		std::string winner = "";
 		std::string loser = "";
 
@@ -32,8 +32,8 @@ namespace sdds {
 		TennisLog();
 		TennisLog(const char* filename);
 		void addMatch(TennisMatch& match);
-		TennisLog& findMatches(const std::string playername) const;
-		TennisMatch& operator[](size_t idx) const;
+		TennisLog findMatches(const std::string playername) const;
+		TennisMatch operator[](size_t idx) const;
 		operator size_t() const;
 		
 	};
