@@ -8,7 +8,7 @@ namespace sdds {
 	std::ostream& operator<<(std::ostream& os, const TennisMatch match)
 	{
 		if (match.isEmpty()) {
-			std::cout << "Empty Match" << std::endl;
+			std::cout << "Empty Match";
 		}
 		else {
 			std::cout << std::right << std::setfill('.') << std::setw(20) << "Tourney ID" << " : " << std::left << std::setw(30) << match.tournamentID << std::endl;
@@ -106,16 +106,16 @@ namespace sdds {
 			//delete the old array
 			delete[] matches;
 			//set the old array to the new one
-			matches = temp;
+			
 			//add the new match to the array
 			count++;
 		}
 		else {
-			matches = new TennisMatch[1];
-			matches[0] = match;
+			//matches = new TennisMatch[1];
+			temp[0] = match;
 			count = 1;
 		}
-		
+		matches = temp;
 	}
 
 	TennisMatch TennisLog::operator[](size_t idx) const {
@@ -128,5 +128,12 @@ namespace sdds {
 	}
 	TennisLog::operator size_t() const {
 		return count;
+	}
+
+	TennisLog::~TennisLog() {
+		if (matches != nullptr) {
+			delete[] matches;
+			matches = nullptr;
+		}
 	}
 };

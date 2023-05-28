@@ -35,6 +35,7 @@ namespace sdds {
 		TennisLog findMatches(const std::string playername) const;
 		TennisMatch operator[](size_t idx) const;
 		operator size_t() const;
+		~TennisLog();
 		
 	};
 
