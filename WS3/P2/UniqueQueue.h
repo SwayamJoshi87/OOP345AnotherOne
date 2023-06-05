@@ -28,10 +28,10 @@ namespace sdds {
 	public:
 		bool push(const double& item) override {
 			for (unsigned int i = 0; i < this->size(); ++i) {
-				//check if difference between items is less than or equal to 0.0005
-				if (std::fabs(this->m_queue[i] - item) <= 0.005) {
-					this->m_queue[i] = item;
-					return true;
+				//check if difference between items is less than or equal to 0.005
+				double newItem = std::fabs(this->m_queue[i] - item);
+				if (newItem <= 0.005) {
+					return false;
 				}
 			}
 			return Queue<double, 100u>::push(item);

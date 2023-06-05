@@ -13,24 +13,24 @@ namespace sdds {
 	{
 		T m_queue[N];
 		T garbage = T();
-		unsigned int currenSize = N;
+		unsigned int currenSize = 0;
 
 	public:
 		Queue() : currenSize{ 0 } {
 		}
 		bool push(const T& item) {
-			bool result = false;
+			//bool result = false;
 			if (currenSize < N) {
-				m_queue[currenSize] = item;
+				m_queue[currenSize] = item; //end of the queue
 				currenSize++;
-				result = true;
+				return true;
 			}
-			return result;
+			return false;
 		}
 
 		T pop() {
 			if (currenSize > 0) {
-				T removed = m_queue[0];
+				T removed = m_queue[0]; //first element
 				--currenSize;
 				//shift the array one step forward
 				for (unsigned int i = 0; i < currenSize; i++) {
@@ -56,7 +56,7 @@ namespace sdds {
 		}
 
 		T operator[](unsigned int i) const {
-			if (i < currenSize) {
+			if (i < currenSize) { //its inside the bounds
 				return m_queue[i];
 			}
 			return garbage;

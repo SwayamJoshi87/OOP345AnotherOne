@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
+#include <cmath>
 #include "Dictionary.h"
 
 #ifndef SDDS_QUEUE_H_
@@ -15,7 +16,7 @@ namespace sdds {
 		T m_queue[N];
 	private:
 		T garbage = T();
-		unsigned int currenSize = N;
+		unsigned int currenSize = 0;
 
 	public:
 		Queue() : currenSize{ 0 } {
@@ -126,7 +127,7 @@ namespace sdds {
 		}
 
 		Dictionary operator[](unsigned int i) const {
-			if (i < 100u) {
+			if (i < currenSize) {
 				return m_queue[i];
 			}
 			return garbage;
@@ -136,41 +137,6 @@ namespace sdds {
 
 		}
 
-	};
-
-
-	//Unique queue
-	template <typename T>
-	class uniqueQueue : public Queue<T, 100u>
-	{
-	public:
-		//Override the push function to check if the item is already in the queue
-		bool push(const T& item) override {
-			for (unsigned int i = 0; i < this->size(); i++) {
-				//If the item is already in the queue, return false
-				if (this->m_queue[i] == item) {
-					return false;
-				}
-			}
-			return Queue<T, 100u>::push(item);
-		}
-	};
-
-	//Specialization when T is a double
-	template <>
-	class uniqueQueue<double> : public Queue<double, 100u>
-	{
-	public:
-		bool push(const double& item) override {
-			for (unsigned int i = 0; i < this->size(); ++i) {
-				//check if difference between items is less than or equal to 0.0005
-				if (std::fabs(this->m_queue[i] - item) <= 0.0005) {
-					this->m_queue[i] = item;
-					return true;
-				}
-			}
-			return Queue<double, 100u>::push(item);
-		}
 	};
 
 };
