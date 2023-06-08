@@ -9,6 +9,8 @@
 
 namespace sdds {
 
+	
+
 	template <typename T, unsigned int N>
 	class Queue
 	{
