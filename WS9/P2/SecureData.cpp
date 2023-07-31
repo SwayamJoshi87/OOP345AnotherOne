@@ -65,7 +65,13 @@ namespace w9 {
 	{
 		// TODO (at-home): rewrite this function to use at least two threads
 		//         to encrypt/decrypt the text.
-		converter(text, key, nbytes, Cryptor());
+		
+		//converter(text, key, nbytes, Cryptor());
+
+		thread t1(bind(converter, text, key, nbytes / 2, Cryptor()));
+		thread t2(bind(converter, text + nbytes / 2, key, nbytes - nbytes / 2, Cryptor()));
+		t1.join();
+		t2.join();
 
 		encoded = !encoded;
 	}
