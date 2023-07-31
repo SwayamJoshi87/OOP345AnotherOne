@@ -62,7 +62,6 @@ namespace sdds {
 					else {
 						newEmp.reset();
 						throw std::string("Invalid employee or salary record");
-
 					}
 				}
 			}
